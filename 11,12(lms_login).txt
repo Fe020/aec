@@ -1,0 +1,23 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class App{
+    public static void main(String[] args) throws Exception {
+        System.setProperty("webdriver.chrome.driver", "D:\\AEC\\lms_login\\lms login\\src\\drivers\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get("http://lms.nmit.ac.in/moodle/login/index.php");
+        //System.out.println(driver.getTitle());
+        WebElement searchBox1 = driver.findElement(By.name("username"));
+        WebElement searchBox2 = driver.findElement(By.name("password"));
+        searchBox1.sendKeys("1NT21CS107");
+        searchBox2.sendKeys("");
+        WebElement sub = driver.findElement(By.id("loginbtn"));
+        sub.submit();
+        
+
+        Thread.sleep(10000);
+    driver.quit();
+    }
+}

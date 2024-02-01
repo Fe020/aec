@@ -1,0 +1,21 @@
+// uploading(prg 17)
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class prg_8 {
+    public static void main(String[] args) throws Exception {
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\saish\\OneDrive\\Desktop\\computer science\\javapro\\Software Testing\\demo\\src\\drivers\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://demo.guru99.com/test/upload/");
+
+        WebElement uploadElement = driver.findElement(By.id("uploadfile_0"));
+
+        uploadElement.sendKeys("C:\\Users\\saish\\OneDrive\\Desktop\\new_learnings_2023\\agile_40_qs.pdf");
+
+        driver.findElement(By.id("terms")).click();
+        driver.findElement(By.name("send")).click();
+    }
+}
