@@ -1,34 +1,25 @@
-// multiple windows , navigation testing (prg 13)
-
-
-import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-
-public class prg_6 {
-    public static void main(String[] args) throws Exception {
-        System.setProperty("webdriver.chrome.driver","C:\\Users\\saish\\OneDrive\\Desktop\\computer science\\javapro\\Software Testing\\demo\\src\\drivers\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://www.hyrtutorials.com/p/window-handles-practice.html");
-
-        String parentHandle = driver.getWindowHandle();
-        System.out.println("Parent:" + parentHandle);
-        driver.findElement(By.id("newWindowBtn")).click();
-        Set<String> handles = driver.getWindowHandles();
-        for (String handle : handles) {
-            System.out.println(handle);
-            if (!handle.equals(parentHandle)) {
-                driver.switchTo().window(handle);
-                driver.findElement(By.id("firstName")).sendKeys("hello world");
-                Thread.sleep(3000);
-                driver.close();
-            }
-        }
-        driver.switchTo().window(parentHandle);
-        driver.findElement(By.id("name")).sendKeys("Pikachu");
-        Thread.sleep(10000);
-        driver.quit();
-}
+public class prg_6_13 {
+ public static void main(String[] args) throws InterruptedException {
+ System.setProperty("webdriver.chrome.driver", 
+"C:\\Users\\saish\\OneDrive\\Desktop\\computer science\\javapro\\Software 
+Testing\\demo\\src\\drivers\\chromedriver.exe");
+ WebDriver driver = new ChromeDriver();
+ // WebDriverWait wait = new WebDriverWait(driver, 3);
+ driver.get("https://www.google.com");
+ driver.findElement(By.name("q")).sendKeys("facebook");
+ driver.findElement(By.name("q")).submit();
+ driver.navigate().to("https://www.facebook.com");
+ driver.findElement(By.name("email")).sendKeys("test@gmail.com");
+ 
+ driver.navigate().refresh();
+ // Wait for some time to allow the video page to load
+ Thread.sleep(5000);
+ driver.navigate().back();
+ driver.navigate().forward();
+ driver.quit();
+ 
+ }
 }
